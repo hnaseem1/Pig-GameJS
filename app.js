@@ -1,6 +1,5 @@
 var scores, activePlayer, roundScore, gamePlaying;
 init ();
-var lastRoll;
 document.querySelector('.btn-new').addEventListener('click', init);
 // Creating an event listner for New Game
 document.querySelector('.btn-roll').addEventListener('click', function() {
@@ -15,13 +14,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     diceDOM.src = 'dice-' + dice +'.png';
 
   // 3) Update the round score if dice is not 1
-  if (lastRoll === 6 && dice === 6) {
-
-    scores[activePlayer] = 0;
-    document.querySelector('#score-'+activePlayer).textContent = "0";
-    nextPlayer();
-
-  } else if (dice != 1) {
+  if (dice != 1) {
 
     roundScore += dice;
     document.querySelector("#current-" + activePlayer).textContent = roundScore;
@@ -31,8 +24,6 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     roundScore = 0
     nextPlayer();
   }
-
-  lastRoll = dice;
 }
 } );
 // Creating an event listner for HOLD BUTTON
